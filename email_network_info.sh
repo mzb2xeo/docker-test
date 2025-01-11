@@ -42,8 +42,6 @@ else
     echo "Failed to get public IP"
 fi
 
-#!/bin/bash
-
 # Function to prompt for an email address
 get_email() {
     read -p "Please enter your email address: " user_email
