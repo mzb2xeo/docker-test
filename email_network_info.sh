@@ -42,20 +42,8 @@ else
     echo "Failed to get public IP"
 fi
 
-# Function to prompt for an email address
-get_email() {
-    read -p "Please enter your email address: " user_email
-    echo $user_email
-}
-
-# Call the function and store the result in a variable
-email=$(get_email)
-
-# Output the captured email address
-echo "You entered: $email"
-
 # Construct email content
 email_content="$datetime \nHostname: $hostname\nInternet Connection: $(ping -c 1 google.com &> /dev/null && echo 'OK' || echo 'None')\n$(get_ips)\nGateway: $gateway\nPublic IP: $public_ip"
 
  Email the collected information using mailx
-echo -e "$email_content" | mailx -s "[$hostname] System Info Report" $email
+echo -e "$email_content" | mailx -s "[$hostname] System Info Report" michael@3mby.com
